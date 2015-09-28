@@ -1,0 +1,28 @@
+
+bin/spark-shell --master yarn-client  --executor-memory 2g
+
+val path = "/ML/dimred/*"
+val rdd = sc.wholeTextFiles(path)
+val first = rdd.first()
+println(first)
+
+val files = rdd.map {case (fileName,content) => fileName.replace("hdfs:","")}
+println(files.first)
+
+
+
+println(files.count)
+
+
+./bin/pyspark --master yarn-client --executor-memory 2g
+
+from scipy.misc import imread
+path = "/ML/dimred/AJ_Cook/AJ_Cook_0001.jpg"
+ae = imread(path)
+imshow(ae)
+
+
+
+
+
+
